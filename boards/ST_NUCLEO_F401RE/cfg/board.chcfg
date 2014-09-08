@@ -10,7 +10,7 @@
   <board_name>STMicroelectronics NUCLEO-F401RE</board_name>
   <board_id>ST_NUCLEO_F401RE</board_id>
   <board_functions></board_functions>
-  <subtype>STM32F401xx</subtype>
+  <subtype>STM32F401xE</subtype>
   <clocks
     HSEFrequency="0"
     HSEBypass="false"
