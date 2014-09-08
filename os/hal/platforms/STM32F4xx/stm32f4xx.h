@@ -10,8 +10,8 @@
   *          is using in the C source code, usually in main.c. This file contains:
   *           - Configuration section that allows to select:
   *              - The STM32F4xx device used in the target application
-  *              - To use or not the peripheral’s drivers in application code(i.e. 
-  *                code will be based on direct access to peripheral’s registers 
+  *              - To use or not the peripheralï¿½s drivers in application code(i.e. 
+  *                code will be based on direct access to peripheralï¿½s registers 
   *                rather than drivers API), this option is controlled by 
   *                "#define USE_HAL_DRIVER"
   *  
@@ -120,24 +120,34 @@
 
 #if defined(STM32F405xx)
   #include "stm32f405xx.h"
+  #define STM32F40_41xxx
 #elif defined(STM32F415xx)
   #include "stm32f415xx.h"
+  #define STM32F40_41xxx
 #elif defined(STM32F407xx)
   #include "stm32f407xx.h"
+  #define STM32F40_41xxx
 #elif defined(STM32F417xx)
   #include "stm32f417xx.h"
+  #define STM32F40_41xxx
 #elif defined(STM32F427xx)
   #include "stm32f427xx.h"
+  #define STM32F427_437xx
 #elif defined(STM32F437xx)
   #include "stm32f437xx.h"
+  #define STM32F427_437xx
 #elif defined(STM32F429xx)
   #include "stm32f429xx.h"
+  #define STM32F429_439xx
 #elif defined(STM32F439xx)
   #include "stm32f439xx.h"
+  #define STM32F429_439xx
 #elif defined(STM32F401xC)
   #include "stm32f401xc.h"
+  #define STM32F401xx
 #elif defined(STM32F401xE)
   #include "stm32f401xe.h"
+  #define STM32F401xx
 #elif defined(STM32F411xE)
   #include "stm32f411xe.h"
 #else
