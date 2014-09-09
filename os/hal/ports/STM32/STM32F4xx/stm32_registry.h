@@ -61,9 +61,14 @@
 #define STM32_HAS_SDADC3                    FALSE
 
 /* CAN attributes.*/
+#if !defined(STM32F401xx)
 #define STM32_HAS_CAN1                      TRUE
 #define STM32_HAS_CAN2                      TRUE
 #define STM32_CAN_MAX_FILTERS               28
+#else /* defined(STM32F401xx) */
+#define STM32_HAS_CAN1                      FALSE
+#define STM32_HAS_CAN2                      FALSE
+#endif /* defined(STM32F401xx) */
 
 /* DAC attributes.*/
 #define STM32_HAS_DAC1                      FALSE
