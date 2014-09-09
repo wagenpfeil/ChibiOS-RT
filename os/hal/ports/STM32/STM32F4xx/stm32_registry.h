@@ -39,6 +39,7 @@
                                              STM32_DMA_STREAM_ID_MSK(2, 4))
 #define STM32_ADC1_DMA_CHN                  0x00000000
 
+#if !defined(STM32F401xx)
 #define STM32_HAS_ADC2                      TRUE
 #define STM32_ADC2_DMA_MSK                  (STM32_DMA_STREAM_ID_MSK(2, 2) |\
                                              STM32_DMA_STREAM_ID_MSK(2, 3))
@@ -48,6 +49,10 @@
 #define STM32_ADC3_DMA_MSK                  (STM32_DMA_STREAM_ID_MSK(2, 0) |\
                                              STM32_DMA_STREAM_ID_MSK(2, 1))
 #define STM32_ADC3_DMA_CHN                  0x00000022
+#else /* defined(STM32F401xx) */
+#define STM32_HAS_ADC2                      FALSE
+#define STM32_HAS_ADC3                      FALSE
+#endif /* defined(STM32F401xx) */
 
 #define STM32_HAS_ADC4                      FALSE
 
