@@ -223,6 +223,7 @@ OSAL_IRQ_HANDLER(VectorE8) {
   OSAL_IRQ_EPILOGUE();
 }
 
+#if !defined(STM32F401xx)
 /**
  * @brief   EXTI[19] interrupt handler (ETH_WKUP).
  *
@@ -238,7 +239,6 @@ OSAL_IRQ_HANDLER(Vector138) {
   OSAL_IRQ_EPILOGUE();
 }
 
-#if !defined(STM32F401xx)
 /**
  * @brief   EXTI[20] interrupt handler (OTG_HS_WKUP).
  *
@@ -253,6 +253,7 @@ OSAL_IRQ_HANDLER(Vector170) {
 
   OSAL_IRQ_EPILOGUE();
 }
+#endif /* !defined(STM32F401xx) */
 
 /**
  * @brief   EXTI[21] interrupt handler (TAMPER_STAMP).
@@ -265,10 +266,9 @@ OSAL_IRQ_HANDLER(Vector48) {
 
   EXTI->PR = (1 << 21);
   EXTD1.config->channels[21].cb(&EXTD1, 21);
-
+  STM32F4xx: fixed STM32F401 ADC presence in registry
   OSAL_IRQ_EPILOGUE();
 }
-#endif /* !defined(STM32F401xx) */
 
 /**
  * @brief   EXTI[22] interrupt handler (RTC_WKUP).
@@ -295,7 +295,7 @@ OSAL_IRQ_HANDLER(Vector4C) {
  * @notapi
  */
 void ext_lld_exti_irq_enable(void) {
-
+	STM32F4xx: fixed STM32F401 ADC presence in registry
   nvicEnableVector(EXTI0_IRQn, STM32_EXT_EXTI0_IRQ_PRIORITY);
   nvicEnableVector(EXTI1_IRQn, STM32_EXT_EXTI1_IRQ_PRIORITY);
   nvicEnableVector(EXTI2_IRQn, STM32_EXT_EXTI2_IRQ_PRIORITY);
@@ -309,8 +309,8 @@ void ext_lld_exti_irq_enable(void) {
 #if !defined(STM32F401xx)
   nvicEnableVector(ETH_WKUP_IRQn, STM32_EXT_EXTI19_IRQ_PRIORITY);
   nvicEnableVector(OTG_HS_WKUP_IRQn, STM32_EXT_EXTI20_IRQ_PRIORITY);
-  nvicEnableVector(TAMP_STAMP_IRQn, STM32_EXT_EXTI21_IRQ_PRIORITY);
 #endif /* !defined(STM32F401xx) */
+  nvicEnableVector(TAMP_STAMP_IRQn, STM32_EXT_EXTI21_IRQ_PRIORITY);
   nvicEnableVector(RTC_WKUP_IRQn, STM32_EXT_EXTI22_IRQ_PRIORITY);
 }
 
@@ -334,8 +334,8 @@ void ext_lld_exti_irq_disable(void) {
 #if !defined(STM32F401xx)
   nvicDisableVector(ETH_WKUP_IRQn);
   nvicDisableVector(OTG_HS_WKUP_IRQn);
-  nvicDisableVector(TAMP_STAMP_IRQn);
 #endif /* !defined(STM32F401xx) */
+  nvicDisableVector(TAMP_STAMP_IRQn);
   nvicDisableVector(RTC_WKUP_IRQn);
 }
 
